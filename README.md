@@ -1,57 +1,68 @@
-# sql-data-analytics-project
-A comprehensive collection of SQL scripts for data exploration, analytics, and reporting. These scripts cover various analyses such as database exploration, measures and metrics, time-based trends, cumulative analytics, segmentation, and more.
-This repository contains SQL queries designed to help data analysts and BI professionals quickly explore, segment, and analyze data within a relational database. Each script focuses on a specific analytical theme and demonstrates best practices for SQL queries.
+# 📊 SQL Data Analytics Project
 
-# SQL Data Exploration Project
+A comprehensive collection of modular SQL scripts designed for **data exploration, analytics, and business intelligence reporting**. This project simulates a full workflow used by data analysts and BI professionals to understand and generate insights from a **retail-style relational database**.
 
-This project contains a sequence of structured SQL scripts that progressively explore and analyze a relational database. It is intended for educational or analytical purposes and follows a modular structure that builds in complexity over time.
+Each script in this repository focuses on a different analytical objective—starting from schema setup, progressing through measures, dimensions, and time series, and concluding with actionable reporting.
+
+---
+## 📦 Dataset Overview: Medallion Architecture
+
+This project follows a **Medallion Architecture**, organizing data into three layers of transformation:
+
+### 🥉 Bronze Layer – Raw Source Data
+
+Raw, unprocessed exports from **CRM and ERP systems**, containing customer, product, pricing, and sales data. These files represent the initial ingestion point and reflect real-world complexity and inconsistency.
 
 ---
 
-## 📁 Project Structure
+### 🥈 Silver Layer – Cleaned & Standardized Data
 
+Intermediate datasets created by **cleaning**, **normalizing**, and **joining** Bronze data. These represent a structured and consistent schema, ready for modeling and aggregation.
+
+---
+
+### 🥇 Gold Layer – Analytics-Ready Data
+
+Final, business-ready datasets used in all SQL analyses and reporting scripts. These tables are structured in a **dimensional model** (star schema) and include both base and aggregated data:
+
+| Table Name                  | Source File              | Description |
+|----------------------------|--------------------------|-------------|
+| `dim_customers`            | `gold.dim_customers.csv` | Clean customer dimension table used for segmentation and reporting |
+| `dim_products`             | `gold.dim_products.csv`  | Product dimension table used for performance analysis |
+| `fact_sales`               | `gold.fact_sales.csv`    | Core fact table containing transactional sales data |
+| `report_customers`         | `gold.report_customers.csv` | Aggregated customer performance metrics |
+| `report_products`          | `gold.report_products.csv` | Aggregated product-level insights and KPIs |
+
+
+---
+
+Each layer reflects a step in the **data refinement process**: from ingestion (Bronze), through transformation (Silver), to final consumption (Gold).
+
+
+## 🗂️ Project Structure
+All SQL queries in this project are executed on the **Gold Layer** datasets — fully cleaned, standardized, and modeled for analytics.
 | File Name                           | Description |
 |------------------------------------|-------------|
-| `00_init_database.sql`             | Initializes the database schema and loads initial data. |
-| `01_database_exploration.sql`      | Explores the general structure and content of the database. |
-| `02_dimensions_exploration.sql`    | Analyzes dimensional tables (e.g., products, customers, regions). |
-| `03_date_range_exploration.sql`    | Identifies the range and distribution of dates in the dataset. |
-| `04_measures_exploration.sql`      | Investigates key measures and their statistical profiles. |
-| `05_magnitude_analysis.sql`        | Detects outliers and values of significant magnitude. |
-| `06_ranking_analysis.sql`          | Ranks entities (products, customers, etc.) based on KPIs. |
-| `07_change_over_time_analysis.sql` | Tracks changes and trends across time periods. |
-| `08_cumulative_analysis.sql`       | Cumulative aggregation and running total analysis. |
-| `09_performance_analysis.sql`      | Evaluates entity performance using defined metrics. |
-| `10_data_segmentation.sql`         | Segments data into logical groups for targeted analysis. |
-| `11_part_to_whole_analysis.sql`    | Analyzes relationships between parts and the whole (e.g., category shares). |
-| `12_report_customers.sql`          | Creates structured reports focused on customer behavior and value. |
-| `13_report_products.sql`           | Produces detailed reports on product performance and contribution. |
+| `00_init_database.sql`             | Initializes the schema and loads initial data. |
+| `01_database_exploration.sql`      | Explores the structure and general content of the database. |
+| `02_dimensions_exploration.sql`    | Analyzes key dimension tables (customers, products). |
+| `03_date_range_exploration.sql`    | Reviews date ranges and distribution of transactions over time. |
+| `04_measures_exploration.sql`      | Inspects metrics (e.g., sales amount, quantity) using statistical summaries. |
+| `05_magnitude_analysis.sql`        | Highlights outliers or unusually large values. |
+| `06_ranking_analysis.sql`          | Ranks top-performing entities based on KPIs. |
+| `07_change_over_time_analysis.sql` | Assesses changes across time periods (e.g., YoY, MoM). |
+| `08_cumulative_analysis.sql`       | Cumulative aggregations (running totals, growth). |
+| `09_performance_analysis.sql`      | Evaluates performance by entity and time. |
+| `10_data_segmentation.sql`         | Segments data into clusters or meaningful groups. |
+| `11_part_to_whole_analysis.sql`    | Compares parts to whole (e.g., category share). |
+| `12_report_customers.sql`          | Structured customer-focused summary report. |
+| `13_report_products.sql`           | Product-focused report including sales breakdowns. |
 
 ---
 
-## 📌 How to Use
+## 🚀 Key Outcomes
 
-1. Clone or download this repository.
-2. Set up your SQL environment (PostgreSQL, MySQL, etc.).
-3. Run each script in order, starting from `00_init_database.sql` to `13_report_products.sql`.
-4. Modify queries as needed to fit your own schema or data needs.
+- Hands-on experience building a retail data warehouse
+- Skill development in SQL data exploration, aggregation, and BI reporting
+- Business-focused data insights using structured queries
 
----
-
-## 🛠 Requirements
-
-- SQL-compatible database (PostgreSQL, MySQL, SQLite, etc.)
-- SQL editor or client (DBeaver, DataGrip, pgAdmin, etc.)
-- Permissions to create and modify database schemas
-
----
-
-## 🎯 Objectives
-
-- Explore database schema and contents
-- Analyze measures and dimensions
-- Perform time-based and cumulative analysis
-- Segment data and generate analytical reports
-- Improve SQL skills and data analysis workflow
-
----
